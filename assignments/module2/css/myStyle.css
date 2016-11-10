@@ -1,0 +1,102 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+h1{
+    text-align: center;
+    font-size: 175%;
+}
+
+/*I want the same empty space between all three sections and the edges of the browser.
+  So I set the left-margin of each section to 2% and for the final right space
+  I set the padding-right of the container to 2%*/
+.container{
+    width: 100%;
+    float: left;
+    padding-right: 2%;
+}
+
+.childs{
+    border: 1px solid black ;
+    float: inherit;
+    background-color: rgb(173, 171, 173);
+    margin-left: 2%;
+    margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 100%;
+}
+
+/*I want the headers to have position absolute. But to do so
+  their parent element needs to have position relative. This is
+  the reason I have this header-container class*/
+.header-container{
+    position: relative;
+    /*this left offset is to counter the padding of the text of the
+      containing ".childs" div*/
+    left: 10px;
+    /*I need a margin so it doesn't overlap with my text*/
+    margin-bottom: 30px;
+}
+
+h3{
+    /*With position absolute I can easily place it to any corner I want.
+      If the position was absolute I had to work my way from the top left corner*/
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    /*No margin to fit perfect on the corner*/
+    margin: 0px;
+    width: 180px;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 125%;
+}
+
+.childs:nth-child(1) .header-container h3{
+    background-color: pink;
+}
+
+.childs:nth-child(2) .header-container h3{
+    background-color: firebrick;
+    color: white;
+}
+
+.childs:nth-child(3) .header-container h3{
+    background-color: yellow;
+}
+
+
+            /*MEDIA QUERIES*/
+/********** Desktop devices only **********/
+@media (min-width: 992px) {
+    /*The width is 31.33 and not 33.33, because there is some space between
+    the sections from the margins (2% to be precise). The same applies for
+    the other media queries*/
+    .col-desk-4{
+        width: 31.333%;
+    }
+}
+
+/********** Tablet devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-tab-6{
+        width: 48%;
+    }
+    .col-tab-12{
+        width: 98%;
+    }
+}
+
+/********** Mobile devices only **********/
+@media (max-width: 767px) {
+    .col-mob-12{
+        width: 98%;
+    }
+}
